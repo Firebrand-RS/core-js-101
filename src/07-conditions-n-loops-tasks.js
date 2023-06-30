@@ -27,8 +27,19 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  // throw new Error('Not implemented');
+  let result = '';
+  if (typeof num === 'number' && num % 3 !== 0 && num % 5 !== 0) {
+    return num;
+  }
+  if (num % 3 === 0) {
+    result += 'Fizz';
+  }
+  if (num % 5 === 0) {
+    result += 'Buzz';
+  }
+  return result;
 }
 
 
@@ -43,8 +54,15 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  // throw new Error('Not implemented');
+  let i = 1;
+  let start = 1;
+  while (i <= n) {
+    start *= i;
+    i += 1;
+  }
+  return start;
 }
 
 
@@ -60,14 +78,20 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  // throw new Error('Not implemented');
+  let result = 0;
+  let active = n1;
+  while (active <= n2) {
+    result += active;
+    active += 1;
+  }
+  return result;
 }
 
 
 /**
- * Returns true, if a triangle can be built with the specified sides a, b, c
- * and false in any other ways.
+ё
  *
  * @param {number} a
  * @param {number} b
@@ -80,8 +104,12 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  // throw new Error('Not implemented');
+  if ((a + b > c) && (b + c > a) && (c + a > b)) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -119,6 +147,13 @@ function isTriangle(/* a, b, c */) {
  */
 function doRectanglesOverlap(/* rect1, rect2 */) {
   throw new Error('Not implemented');
+  // if ((rect1.top + rect1.height) < rect2.top && (rect1.left + rect1.width) < rect2.left) {
+  //   return true;
+  // }
+  // if ((rect2.top + rect2.height) < rect1.top && (rect2.left + rect2.width) < rect1.left) {
+  //   return true;
+  // }
+  // return false;
 }
 
 
@@ -166,6 +201,14 @@ function isInsideCircle(/* circle, point */) {
  */
 function findFirstSingleChar(/* str */) {
   throw new Error('Not implemented');
+  // const charArr = str.slice('');
+  // charArr.forEach((char) => {
+  //   const result = charArr.filter((item) => item === char);
+  //   if (result.length === 1) {
+  //     return char;
+  //   }
+  //   return null;
+  // });
 }
 
 

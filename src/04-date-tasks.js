@@ -19,8 +19,9 @@
  *    'Tue, 26 Jan 2016 13:48:02 GMT' => Date()
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
-function parseDataFromRfc2822(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromRfc2822(value) {
+  // throw new Error('Not implemented');
+  return new Date(value);
 }
 
 /**
@@ -34,8 +35,9 @@ function parseDataFromRfc2822(/* value */) {
  *    '2016-01-19T16:07:37+00:00'    => Date()
  *    '2016-01-19T08:07:37Z' => Date()
  */
-function parseDataFromIso8601(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromIso8601(value) {
+  // throw new Error('Not implemented');
+  return new Date(value);
 }
 
 
@@ -53,8 +55,9 @@ function parseDataFromIso8601(/* value */) {
  *    Date(2012,1,1)    => true
  *    Date(2015,1,1)    => false
  */
-function isLeapYear(/* date */) {
-  throw new Error('Not implemented');
+function isLeapYear(date) {
+  const year = date.getFullYear();
+  return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
 }
 
 
@@ -73,8 +76,11 @@ function isLeapYear(/* date */) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
+function timeSpanToString(startDate, endDate) {
+  // throw new Error('Not implemented');
+  const range = endDate - startDate;
+  const resultDate = new Date(range);
+  return `${resultDate.getUTCHours().toString().padStart(2, 0)}:${resultDate.getUTCMinutes().toString().padStart(2, 0)}:${resultDate.getUTCSeconds().toString().padStart(2, 0)}.${resultDate.getUTCMilliseconds().toString().padStart(3, 0)}`;
 }
 
 
@@ -96,6 +102,15 @@ function timeSpanToString(/* startDate, endDate */) {
  */
 function angleBetweenClockHands(/* date */) {
   throw new Error('Not implemented');
+  // const hour = date.getFullYear();
+  // const minutes = date.getMinutes();
+  // const secInPI = (Math.PI * 2) / (12 * 60);
+  // const hourNorm = hour % 12;
+  // const hourRad = hourNorm * 60 * 60 * secInPI;
+  // const minRad = minutes * 60 * secInPI;
+  // const angle = Math.abs(hourRad - minRad) > Math.PI ? Math.PI * 2
+  // - Math.abs(hourRad - minRad) : Math.abs(hourRad - minRad);
+  // return angle;
 }
 
 
