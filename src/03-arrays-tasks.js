@@ -485,15 +485,14 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
-  // return arr.sort((a, b) => {
-  //   const { country: aCountry, city: aCity } = a;
-  //   const { country: bCountry, city: bCity } = b;
-  //   const aString = aCountry + aCity;
-  //   const bString = bCountry + bCity;
-  //   return aString > bString;
-  // });
+function sortCitiesArray(arr) {
+  // throw new Error('Not implemented');
+  return arr.sort((a, b) => {
+    if (a.country !== b.country) {
+      return a.country >= b.country ? 1 : -1;
+    }
+    return a.city >= b.city ? 1 : -1;
+  });
 }
 
 /**
@@ -590,8 +589,17 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  // throw new Error('Not implemented');
+  const result = array.reduce((acc, item) => {
+    const key = keySelector(item);
+    const value = valueSelector(item);
+    const newArray = acc.get(key) || [];
+    newArray.push(value);
+    acc.set(key, newArray);
+    return acc;
+  }, new Map());
+  return result;
 }
 
 
@@ -608,17 +616,9 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
-  // const result = [];
-  // arr.map((item) => {
-  //   result.concat(...item);
-  // const isStringArray = result.every((item) => typeof item === 'string');
-  // if (isStringArray) {
-  //   return result.reduce((sum, item) => sum + item, '');
-  // }
-  // return childrenSelector(result);
-  // });
+function selectMany(arr, childrenSelector) {
+  // throw new Error('Not implemented');
+  return arr.map((item) => childrenSelector(item)).flat(1);
 }
 
 
